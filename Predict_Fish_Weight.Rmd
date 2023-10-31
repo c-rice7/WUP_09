@@ -51,6 +51,29 @@ Whitefish <- select(Whitefish, -Species)
 
 ## Perch
 
+```{r}
+fullupPerch <- lm(Weight~ .,data=Perch)
+summary.lm(fullupPerch)
+```
+```{r}
+PerchMODL1 <- lm(Weight~ .-Length2,data=Perch)
+summary.lm(PerchMODL1)
+```
+```{r}
+PerchMODL2 <- lm(Weight~ .-Length2-Length1,data=Perch)
+summary.lm(PerchMODL2)
+```
+
+```{r}
+PerchMODL3 <- lm(Weight~ .-Length2-Length1-Length3,data=Perch)
+summary.lm(PerchMODL3)
+```
+## PerchMODL3 Best model??
+```{r}
+PerchMODL4 <- lm(Weight~ .-Length2-Length1-Length3-Width,data=Perch)
+summary.lm(PerchMODL4)
+```
+
 ### Best Models
 
 ### Best Two regressor model
@@ -58,11 +81,59 @@ Whitefish <- select(Whitefish, -Species)
 
 ## Pike
 
+
+```{r}
+fullupPike <- lm(Weight~ .,data=Pike)
+summary.lm(fullupPike)
+```
+
+## fullupPike Best model??
+
+```{r}
+PikeMODL1 <- lm(Weight~ .-Length2,data=Pike)
+summary.lm(PikeMODL1)
+```
+```{r}
+PikeMODL2 <- lm(Weight~ .-Length2-Length1,data=Pike)
+summary.lm(PikeMODL2)
+```
+```{r}
+PikeMODL3 <- lm(Weight~ .-Length2-Length1-Length3,data=Pike)
+summary.lm(PikeMODL3)
+```
+```{r}
+PikeMODL4 <- lm(Weight~ .-Length2-Length1-Length3-Width,data=Pike)
+summary.lm(PikeMODL4)
+```
+
 ### Best Models
 
 ### Best Two regressor model
 
 ## Roach
+
+```{r}
+fullupRoach <- lm(Weight~ .,data=Roach)
+summary.lm(fullupRoach)
+```
+```{r}
+RoachMODL1 <- lm(Weight~ .-Length2,data=Roach)
+summary.lm(RoachMODL1)
+```
+```{r}
+RoachMODL2 <- lm(Weight~ .-Length2-Length1,data=Roach)
+summary.lm(RoachMODL2)
+```
+```{r}
+RoachMODL3 <- lm(Weight~ .-Length2-Length1-Length3,data=Roach)
+summary.lm(RoachMODL3)
+```
+```{r}
+RoachMODL4 <- lm(Weight~ .-Length2-Length1-Length3-Height,data=Roach)
+summary.lm(RoachMODL4)
+```
+
+## RoachMODL4 Best model??
 
 ### Best Models
 
