@@ -8,10 +8,7 @@ output:
     toc: true
     toc_depth: 5
 
- 
-    
 ---
-
 
 ```{r include=FALSE,echo=FALSE}
 require(tigerstats)
@@ -52,6 +49,11 @@ Whitefish <- select(Whitefish, -Species)
 ## Perch
 
 ```{r}
+Perchfullup <- lm(Weight~ .,data=Perch)
+summary.lm(Perchfullup)
+```
+
+```{r}
 library(leaps)
 regsubsets.out <-
     regsubsets(Weight ~ .,
@@ -68,11 +70,28 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottom",main="Adjusted R^2")
 ```
 ### Best Models
 
+```{r}
+which.max(summary.out$adjr2)
+```
+```{r}
+summary.out$which[2,]
+```
+```{r}
+best.model <- lm(Weight~Height+Width,data=Perch)
+summary(best.model)
+```
+```{r}
+anova(Perchfullup,best.model)
+```
+
 ### Best Two regressor model
 
 
 ## Pike
-
+```{r}
+Pikefullup <- lm(Weight~ .,data=Pike)
+summary.lm(Pikefullup)
+```
 ```{r}
 library(leaps)
 regsubsets.out <-
@@ -88,13 +107,26 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
+```{r}
+which.max(summary.out$adjr2)
+```
+```{r}
+summary.out$which[5,]
+```
+```{r}
+best.model <- lm(Weight~.,data=Perch)
+summary(best.model)
+```
 
 ### Best Models
 
 ### Best Two regressor model
 
 ## Roach
-
+```{r}
+Roachfullup <- lm(Weight~ .,data=Roach)
+summary.lm(Roachfullup)
+```
 ```{r}
 library(leaps)
 regsubsets.out <-
@@ -110,7 +142,19 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomleft",main="Adjusted R^2")
 ```
-
+```{r}
+which.max(summary.out$adjr2)
+```
+```{r}
+summary.out$which[2,]
+```
+```{r}
+best.model <- lm(Weight~Width+Length3,data=Roach)
+summary(best.model)
+```
+```{r}
+anova(Roachfullup,best.model)
+```
 ### Best Models
 
 ### Best Two regressor model
